@@ -34,7 +34,7 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
     </td>
     <td align="center"><a href="https://github.com/Jihyeon0804" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> 
     </td>
-    <td align="center"><a href="https://github.com/publicguard_" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
+    <td align="center"><a href="https://github.com/SuOhYoon" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
     </td>
   </tr>
 </table>
