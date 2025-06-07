@@ -11,19 +11,19 @@ CALL update_category(3, 2, '정보보안');
 CALL delete_category(5);
 
 /* 자격증 */
--- 자격증 상세 정보 조회
+/* 자격증 상세 정보 조회 */
 CALL select_exam_detail(1);
--- 자격증 상세 정보 생성
+/* 자격증 상세 정보 생성 */
 SET @status = 0;
 SET @new_id = NULL;
 CALL create_exam_detail(1, 1, 'SQLD', '데이터베이스 SQL 개발자 자격증입니다.', '추가 정보', @status, @new_id);
 SELECT @status AS Status, @new_id AS NewExamSubjectId;
--- 필수 값 누락 시도
+/* 필수 값 누락 시도 */
 SET @status = 0;
 SET @new_id = NULL;
 CALL create_exam_detail(1, 1, NULL, '설명', '정보', @status, @new_id);
 SELECT @status AS Status, @new_id AS NewExamSubjectId;
--- 존재하지 않는 FK 시도
+/* 존재하지 않는 FK 시도 */
 SET @status = 0;
 SET @new_id = NULL;
 CALL create_exam_detail(9999, 1, '잘못된 카테고리', '설명', '정보', @status, @new_id);
@@ -103,7 +103,7 @@ SELECT @status AS Status;
 CALL select_curriculum(1);
 
 /* 장바구니 */
--- 커리큘럼 추가
+/* 커리큘럼 추가 */
 SET @status = 0;
 CALL add_cart(1, 1, @status); -- user_id 1의 장바구니에 curriculum_id 1 추가
 SELECT @status AS Status;
@@ -120,7 +120,7 @@ SET @status = 0;
 CALL add_cart(1, 999, @status); -- 존재하지 않는 user_id 시도
 SELECT @status AS Status;
 
--- 커리큘럼 삭제
+/* 커리큘럼 삭제 */
 SET @status = 0;
 -- 먼저 장바구니에 항목을 추가하여 삭제할 항목을 만듭니다. (예: cart_id가 1인 항목)
 -- CALL AddCurriculumToCart(1, 1, @dummy_status);
