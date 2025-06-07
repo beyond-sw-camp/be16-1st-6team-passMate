@@ -33,13 +33,13 @@ select * from curriculum where exam_subject_id = ?;
 -- 결제수단 추가
 insert into method() values();
 -- 결제 수단 삭제
-delete method where payment_id = ?
+delete method where payment_id = ?;
 -- 환불
-delete payment where payment_id = ?
+delete payment where payment_id = ?;
 -- 구매 가능한 커리큘럼 조회
 select * from curriculum_sale where is_seen = true;
 -- 구매
-insert into curriculum_sale() values();
+insert into payment() values();
 -- 구매확정
 update payment set confirm = true where payment_id = ?;
 -- 결제 내역 조회
@@ -79,7 +79,7 @@ insert into qualification_type() values();
 -- 일정 삭제
 delete event where event_id = ?;
 -- 카테고리 선택
-select * from category where exam_subject_id = ?
+select * from category where exam_subject_id = ?;
 -- 복습주기/회차 선택
 select * from
 
@@ -103,7 +103,7 @@ delete note where note_id = ?;
 -- 즐겨찾기 설정
 insert into favorite() values();
 -- 즐겨찾기 해제
-delete favorite where favorite_id = ?
+delete favorite where favorite_id = ?;
 
 /* 장바구니 */
 -- 커리큘럼 추가
