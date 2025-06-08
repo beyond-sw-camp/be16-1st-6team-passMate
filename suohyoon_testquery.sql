@@ -163,50 +163,16 @@ call delete_exam_detail(1);
 
 /* 커리큘럼 */
 /* 커리큘럼 등록 */
-SET @status = 0;
-SET @new_id = NULL;
-CALL create_curriculum(1, '데이터베이스 기초 커리큘럼', '관계형 데이터베이스의 기초를 다루는 초급자용 SQLD 커리큘럼입니다.', @status, @new_id);
-SELECT @status AS Status, @new_id AS NewCurriculumId;
+CALL create_curriculum(1, 1, '데이터베이스 기초 커리큘럼');
 
--- 필수 값 누락 시도
-SET @status = 0;
-SET @new_id = NULL;
-CALL create_curriculum(1, NULL, '설명', @status, @new_id);
-SELECT @status AS Status, @new_id AS NewCurriculumId;
-
--- 존재하지 않는 exam_subject_id 시도
-SET @status = 0;
-SET @new_id = NULL;
-CALL create_curriculum(9999, '잘못된 자격증 커리큘럼', '설명', @status, @new_id);
-SELECT @status AS Status, @new_id AS NewCurriculumId;
 /* 커리큘럼 수정 */
-SET @status = 0;
-CALL update_curriculum(1, NULL, '데이터베이스 중급 커리큘럼', '중급자를 위한 SQLP 커리큘럼입니다.', @status);
-SELECT @status AS Status;
-
-SET @status = 0;
-CALL update_curriculum(1, 2, '다른 자격증으로 변경', NULL, @status);
-SELECT @status AS Status;
-
-SET @status = 0;
-CALL update_curriculum(999, NULL, '없는 ID', NULL, @status);
-SELECT @status AS Status;
-
-SET @status = 0;
-CALL update_curriculum(1, 9999, '잘못된 FK', NULL, @status);
-SELECT @status AS Status;
+CALL update_curriculum(1, 1, '정보처리기사 실기 기초 커리큘럼');
 
 /* 커리큘럼 삭제 */
-SET @status = 0;
-CALL delete_curriculum(1, @status);
-SELECT @status AS Status;
-
-SET @status = 0;
-CALL delete_curriculum(999, @status);
-SELECT @status AS Status;
+CALL delete_curriculum(2);
 
 /* 커리큘럼 조회 */
-CALL select_curriculum(1);
+select * from curriculum where exam_subject_id = 1;
 
 /* 장바구니 */
 /* 커리큘럼 추가 */
