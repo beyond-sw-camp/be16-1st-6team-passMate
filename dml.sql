@@ -48,8 +48,7 @@ update payment set is_refund=true where payment_id = ? and confirm=false; -- del
 -- 구매 가능한 커리큘럼 조회
 select * from curriculum_sale where is_seen = true; 
 -- 사용자가 원하는 시험을 필터링 한다고 가정하면
-select * from curriculu_sale inner join exam_subject on exam_subject_id=사용자가 원하는 시험 종목 id where is_seen = true;
-
+select * from curriculum_sale where is_seen = true and exam_subject_id=사용자가 원하는 자격증 id;
 -- 구매
 insert into payment(user_id, curriculum_sale_id, method_id, status) values(1, 1, 1, 'STANBY');
 
