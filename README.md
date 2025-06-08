@@ -121,24 +121,39 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </details>
 <details>
   <summary>14. 결제 수단 추가</summary>
+  <img src="images/payment/1_결제 수단 추가.png">
 </details>
 <details>
   <summary>15. 결제 수단 삭제</summary>
+  <img src="images/payment/2_결제 수단 삭제.png">
 </details>
 <details>
   <summary>16. 환불</summary>
+  <br>구매내역 조회 (환불 가능 여부 포함)
+  <br><img src="images/payment/3_환불가능여부 포함한 구매내역 조회.png">
+  <br>환불처리
+  <br><img src="images/payment/3_환불처리.png">
 </details>
 <details>
   <summary>17. 구매가능한 커리큘럼 조회</summary>
+  <img src="images/payment/4_구매가능한커리큘럼조회.png">
 </details>
 <details>
   <summary>18. 구매</summary>
+  <img src="images/payment/5_구매.png">
 </details>
 <details>
   <summary>19. 구매 확정</summary>
+  <br>자동 구매 확정 처리 전
+  <br><img src="images/payment/6_자동 구매 확정 처리 전.png">
+  <br>자동 구매 확정 처리 후
+  <br> <img src="images/payment/6_자동 구매 확정 처리 후.png">
+  <br>수동 구매 확정 처리 후
+  <br> <img src="images/payment/6_수동 구매 확정 처리 후.png">
 </details>
 <details>
   <summary>20. 결제 내역 조회</summary>
+  <img src="images/payment/7_결제 내역 조회.png">
 </details>
 <details>
   <summary>21. 자격증 상세 정보 조회</summary>
