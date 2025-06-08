@@ -109,15 +109,19 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </details>
 <details>
   <summary>10. 커리큘럼 등록</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/89123429-849b-48c0-bb0f-74e76b52bc9e">  
 </details>
 <details>
   <summary>11. 커리큘럼 수정</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/e4d900fe-6002-46da-8218-0746e735a7ea">  
 </details>
 <details>
   <summary>12. 커리큘럼 삭제</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/a3789f59-59f5-49ed-bcbf-c9c2ad61d014">  
 </details>
 <details>
   <summary>13. 커리큘럼 조회</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/c193ac66-2167-4cb9-8c77-d062181f9c0f">  
 </details>
 <details>
   <summary>14. 결제 수단 추가</summary>
@@ -142,27 +146,37 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </details>
 <details>
   <summary>21. 자격증 상세 정보 조회</summary>
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/1e025b24-89b8-4f2a-8d63-48db3acc54ff" />
 </details>
 <details>
   <summary>22. 자격증 상세 정보 생성</summary>
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/aa0b4308-8f43-4a77-9003-1f313cab1811" />
 </details>
 <details>
   <summary>23. 자격증 상세 정보 수정</summary>
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/43ec2d01-4a17-4e14-8366-ea428dee7ddd" />
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/5d56f7cd-ca0d-4ce1-ba4a-4f28b7de00c6" />
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/dac157eb-6e2e-414c-b758-d5979bab9805" />
 </details>
 <details>
   <summary>24. 자격증 상세 정보 삭제</summary>
+  <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/224b7904-9d72-478f-bfcc-19a957828165" />
 </details>
 <details>
   <summary>25. 카테고리 조회</summary>
+    <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/d146fc08-ee53-4840-b1d7-8053e5bb9695" />
 </details>
 <details>
   <summary>26. 카테고리 생성</summary>
+    <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/e72f66bc-80c4-4521-a0fe-5e12cb1f1327" />
 </details>
 <details>
   <summary>27. 카테고리 수정</summary>
+    <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/2d7ee1da-b215-431d-b0f6-1b647fbb9d4e" />
 </details>
 <details>
   <summary>28. 카테고리 삭제</summary>
+    <img width="1050" alt="Image" src="https://github.com/user-attachments/assets/26f8eace-62b2-422d-b016-8e6f1b7c2ac6" />
 </details>
 <details>
   <summary>29. 일정 생성</summary>
@@ -205,10 +219,12 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   <summary>39. 노트 삭제</summary>
 </details>
 <details>
-  <summary>40. 커리큘럼 추가</summary>
+  <summary>40. 장바구니에 커리큘럼 추가</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/3dc350ea-c8f5-4eb7-8e9d-63915d5cbf5e">  
 </details>
 <details>
-  <summary>41. 커리큘럼 삭제</summary>
+  <summary>41. 장바구니에서 커리큘럼 삭제</summary>
+  <img width=1050 src="https://github.com/user-attachments/assets/86b78e73-ef83-4d3e-850e-40c2abebe9c9">  
 </details>
 <details>
   <summary>42. 즐겨찾기 설정</summary>
