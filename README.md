@@ -70,4 +70,166 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 ## ERD
 
 ## Test Query
-
+<details>
+  <summary>1. 회원가입</summary>
+</details>
+<details>
+  <summary>2. 로그인</summary>
+</details>
+<details>
+  <summary>3. 로그아웃</summary>
+</details>
+<details>
+  <summary>4. 회원 탈퇴</summary>
+</details>
+<details>
+  <summary>5. 내 정보 조회</summary>
+    <img width=700 src="https://github.com/user-attachments/assets/1f33cedf-ad52-41cd-be79-e0b0fa2f9221">
+    <img width=800 src="https://github.com/user-attachments/assets/83284145-b9e6-4514-b7dd-5f24d06c5b13">
+</details>
+<details>
+  <summary>6. 내 정보 수정</summary>
+    <img width=700 src="https://github.com/user-attachments/assets/3364f673-022a-48c9-beef-9561510e14b3">
+    <img width=800 src="https://github.com/user-attachments/assets/67a54979-78a2-4570-b554-3105f775fb97">
+</details>
+<details>
+  <summary>7. 정산일 설정</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/7c3e03fa-0711-4828-9051-c73b41090178">
+    <img width=800 src="https://github.com/user-attachments/assets/75430c4c-f2a6-40c4-a540-93bec6151d75">
+</details>
+<details>
+  <summary>8. 정산 조회</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/76427e65-de72-41e5-9efb-3caba149b8e2">
+    <img width=800 src="https://github.com/user-attachments/assets/3cbd738e-9c88-4d09-bed5-1893f9113fe7">
+</details>
+<details>
+  <summary>9. 정산 처리</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/d0f75016-1415-4d92-8c1e-38734dd3127b">
+    <img width=800 src="https://github.com/user-attachments/assets/07692d63-9a11-4a74-9e82-b9e2f96408c8">
+</details>
+<details>
+  <summary>10. 커리큘럼 등록</summary>
+</details>
+<details>
+  <summary>11. 커리큘럼 수정</summary>
+</details>
+<details>
+  <summary>12. 커리큘럼 삭제</summary>
+</details>
+<details>
+  <summary>13. 커리큘럼 조회</summary>
+</details>
+<details>
+  <summary>14. 결제 수단 추가</summary>
+</details>
+<details>
+  <summary>15. 결제 수단 삭제</summary>
+</details>
+<details>
+  <summary>16. 환불</summary>
+</details>
+<details>
+  <summary>17. 구매가능한 커리큘럼 조회</summary>
+</details>
+<details>
+  <summary>18. 구매</summary>
+</details>
+<details>
+  <summary>19. 구매 확정</summary>
+</details>
+<details>
+  <summary>20. 결제 내역 조회</summary>
+</details>
+<details>
+  <summary>21. 자격증 상세 정보 조회</summary>
+</details>
+<details>
+  <summary>22. 자격증 상세 정보 생성</summary>
+</details>
+<details>
+  <summary>23. 자격증 상세 정보 수정</summary>
+</details>
+<details>
+  <summary>24. 자격증 상세 정보 삭제</summary>
+</details>
+<details>
+  <summary>25. 카테고리 조회</summary>
+</details>
+<details>
+  <summary>26. 카테고리 생성</summary>
+</details>
+<details>
+  <summary>27. 카테고리 수정</summary>
+</details>
+<details>
+  <summary>28. 카테고리 삭제</summary>
+</details>
+<details>
+  <summary>29. 일정 생성</summary>
+</details>
+<details>
+  <summary>30. 일정 수정</summary>
+</details>
+<details>
+  <summary>31. 일정 삭제</summary>
+</details>
+<details>
+  <summary>32. 카테고리 선택</summary>
+</details>
+<details>
+  <summary>33. 복습 주기 / 회차 선택</summary>
+</details>
+<details>
+  <summary>34. To Do List 생성</summary>
+</details>
+<details>
+  <summary>35. To Do List 수정</summary>
+</details>
+<details>
+  <summary>36. To Do List 삭제</summary>
+</details>
+<details>
+  <summary>37. 노트 생성</summary>
+</details>
+<details>
+  <summary>38. 노트 수정</summary>
+</details>
+<details>
+  <summary>39. 노트 삭제</summary>
+</details>
+<details>
+  <summary>40. 커리큘럼 추가</summary>
+</details>
+<details>
+  <summary>41. 커리큘럼 삭제</summary>
+</details>
+<details>
+  <summary>42. 즐겨찾기 설정</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/576b05ae-e430-4255-84e0-6f68195263aa">
+    <img width=800 src="https://github.com/user-attachments/assets/b5ad1452-1de1-448a-a1cc-31ec2a7a2d47">
+</details>
+<details>
+  <summary>43. 즐겨찾기 해제</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/c15424a1-aa57-4f47-a4a1-cca1443e1fe0">
+    <img width=800 src="https://github.com/user-attachments/assets/65fc9219-b538-4086-8751-2aff804ed6ed">
+</details>
+<details>
+  <summary>44. 쪽지 보내기</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/ff059368-6602-48e8-af0b-13496783c9ca">
+    <img width=800 src="https://github.com/user-attachments/assets/f7ebb20c-586b-4830-97f4-6900ce7a3d1e">
+</details>
+<details>
+  <summary>45. 쪽지함 새로고침</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/a8cc9c0e-415e-41e7-acd1-5e669d73362b">
+    <img width=800 src="https://github.com/user-attachments/assets/9eeadf8a-abac-4cde-9b00-6908258cb93d">
+</details>
+<details>
+  <summary>46. 쪽지 읽기</summary>
+    <img width=800 src="https://github.com/user-attachments/assets/208d709b-d868-4eea-8c67-23b46049267e">
+    <img width=800 src="https://github.com/user-attachments/assets/e9b2df96-679f-444a-9385-56acc6cb9b6c">
+</details>
+<details>
+  <summary>47. 쪽지 삭제</summary>
+    <img width=700 src="https://github.com/user-attachments/assets/09e4377c-40f5-4ddf-8dec-0273d22d87cf">
+    <img width=800 src="https://github.com/user-attachments/assets/1a6bc304-f82e-4577-b400-295b336075f2">
+</details>
