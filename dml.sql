@@ -38,8 +38,13 @@ VALUES (1, 'CARD', '1234-5678-9012-3456');
 INSERT INTO method (user_id, type, account)
 VALUES (1, 'BANK', '110-123-456789');
 
+-- 결제수단 등록 확인
+SELECT * FROM method WHERE user_id = 1;
+
 -- PAY_02: 결제 수단 삭제(정지완)
 update method set is_deleted=true where method_id = 결제수단ID AND user_id=유저ID; -- payment 테이블에 외래키 걸려있어서 삭제 불가능 -> method 에 활성, 비활성 구분 가능한 컬럼 하나 추가해서 관리하면 될듯
+-- 삭제 후 확인
+SELECT * FROM method WHERE user_id = 1;
 -- alter table method add column is_deleted boolean default false;
 
 -- PAY_03: 환불(정지완)
@@ -107,11 +112,12 @@ insert into payment(user_id, curriculum_sale_id, method_id, status) values(1, 1,
 UPDATE payment 
 SET status = 'IN_PROGRESS'
 WHERE payment_id = LAST_INSERT_ID();
-
 -- 결제 완료 처리
 UPDATE payment 
 SET status = 'COMPLETE', date = CURRENT_TIMESTAMP
 WHERE payment_id = LAST_INSERT_ID();
+-- 결제 완료 확인
+SELECT * FROM payment WHERE payment_id = LAST_INSERT_ID();
 
 -- PAY_06: 구매확정(정지완)
 -- 수동구매확정
@@ -127,22 +133,33 @@ AND is_refund = false
 AND date <= DATE_SUB(NOW(), INTERVAL 7 DAY);
 
 -- PAY_07: 결제 내역 조회(정지완)
--- 전체 결제 내역 조회
+-- 상세 결제 내역 조회
 SELECT 
     p.payment_id,
     cs.title as curriculum_title,
     cs.price,
     m.type as payment_method,
+    m.account as payment_account,
     p.status,
     p.date as payment_date,
     p.confirm,
+    p.is_refund,
     u.nickname as seller_name,
     CASE 
-        WHEN p.status = 'STANBY' THEN '결제 대기'
-        WHEN p.status = 'IN_PROGRESS' THEN '결제 진행중'
+        WHEN p.is_refund = true THEN '환불완료'
+        WHEN p.status = 'STANBY' THEN '결제대기'
+        WHEN p.status = 'IN_PROGRESS' THEN '결제진행중'
         WHEN p.status = 'COMPLETE' AND p.confirm = false THEN '결제완료(확정대기)'
         WHEN p.status = 'COMPLETE' AND p.confirm = true THEN '구매확정'
-    END as status_description
+        ELSE '상태불명'
+    END as transaction_status,
+    CASE 
+        WHEN p.is_refund = true THEN '환불됨'
+        WHEN p.status = 'COMPLETE' AND p.confirm = false AND DATEDIFF(NOW(), p.date) < 7 THEN '환불가능'
+        WHEN p.status = 'COMPLETE' AND p.confirm = true THEN '환불불가(구매확정)'
+        WHEN p.status = 'COMPLETE' AND DATEDIFF(NOW(), p.date) >= 7 THEN '환불불가(기간만료)'
+        ELSE '환불불가(결제대기)'
+    END as refund_status
 FROM payment p
 JOIN curriculum_sale cs ON p.curriculum_sale_id = cs.curriculum_sale_id
 JOIN method m ON p.method_id = m.method_id
