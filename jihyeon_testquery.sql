@@ -143,22 +143,18 @@ DELIMITER ;
 -- 정산 처리
 DELIMITER //
 
-CREATE PROCEDURE processSettlement()
+CREATE PROCEDURE ProcessSettlements()
 BEGIN
-    START TRANSACTION;
-
     UPDATE settlement s
     JOIN settlement_account sa ON s.settlement_account_id = sa.settlement_account_id
     JOIN settlement_setting ss ON sa.user_id = ss.user_id
-    SET s.is_completed = true,
+    SET 
+        s.is_completed = TRUE,
         s.settlement_date = NOW()
-    WHERE s.is_completed = false
-      AND ss.settlement_day IS NOT NULL
-      AND DAY(CURDATE()) >= ss.settlement_day;
-
-    COMMIT;
-END;
-//
+    WHERE s.is_completed = FALSE
+      AND ss.settlement_day < DAY(CURDATE())
+      AND (s.settlement_date IS NULL OR s.settlement_date < CURDATE());
+END //
 
 DELIMITER ;
 
