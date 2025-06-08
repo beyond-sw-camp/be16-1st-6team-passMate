@@ -37,11 +37,7 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   </tr>
 </table>
 
-## 🏗️ 기술 스택
-
-
-
-## 🛠 시스템 주요 기능 
+## 🛠 요구사항 분석 
 
 ### 1. 👤 회원가입 및 사용자 관리
 - 회원가입 및 로그인
@@ -64,10 +60,14 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   - 관심 게시자 구독
   - 세부 일정을 내 일정에 반영
 - **결제 시스템** 연동 (카카오페이, 카드 등)
-
+- 
+## 요구사항 정의 및 명세서(SRD)
+https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=1725882102#gid=1725882102
 ## WBS
-
+https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274
 ## ERD
+<img src="https://github.com/user-attachments/assets/dc7fcc37-1838-46f1-801c-69ab4639ad8f">
+https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK
 
 ## Test Query
 <details>
