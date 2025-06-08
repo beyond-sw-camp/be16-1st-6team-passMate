@@ -53,10 +53,10 @@ select * from curriculum_sale where is_seen = true and exam_subject_id=사용자
 insert into payment(user_id, curriculum_sale_id, method_id, status) values(1, 1, 1, 'STANBY');
 
 -- 구매확정
-update payment set confirm = true where payment_id = ?;
+update payment set confirm = true where payment_id = 유저가구매확정한구매기록id and status='COMPLETE';
 
 -- 결제 내역 조회
-select * from payment where user_id = ?;
+select * from payment where user_id = 유저id;
 
 /* 자격증 */
 -- 자격증 상세 정보 조회
