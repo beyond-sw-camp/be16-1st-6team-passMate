@@ -389,162 +389,74 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE create_curriculum(
+    IN p_user_id BIGINT,
     IN p_exam_subject_id BIGINT,
-    IN p_name VARCHAR(255),
-    IN p_description TEXT,
-    OUT p_status INT,             -- 0: 성공, -1: 필수 값 누락, -2: FK 오류, -3: 기타 오류
-    OUT p_new_curriculum_id BIGINT
+    IN p_name VARCHAR(255)
 )
 BEGIN
-    -- 에러 핸들러 선언
+    DECLARE v_new_id BIGINT;
+
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         ROLLBACK;
-        IF SQLSTATE = '23000' THEN -- Integrity constraint violation (FK or NOT NULL)
-            SET p_status = -2; -- FK 오류 또는 NOT NULL 제약 조건 위반 등
-        ELSE
-            SET p_status = -3; -- 기타 오류
-        END IF;
-        SET p_new_curriculum_id = NULL;
+        SELECT '오류 발생' AS message, NULL AS curriculum_id;
     END;
 
-    -- 필수 값 (name) 검사
-    IF p_name IS NULL OR LTRIM(RTRIM(p_name)) = '' THEN
-        SET p_status = -1;
-        SET p_new_curriculum_id = NULL;
+    IF p_user_id IS NULL OR p_name IS NULL OR LTRIM(RTRIM(p_name)) = '' THEN
+        SELECT '필수 값 누락' AS message, NULL AS curriculum_id;
     ELSE
         START TRANSACTION;
 
-        INSERT INTO curriculum (exam_subject_id, name, description)
-        VALUES (p_exam_subject_id, p_name, p_description);
+        INSERT INTO curriculum (user_id, exam_subject_id, name)
+        VALUES (p_user_id, p_exam_subject_id, p_name);
 
-        SET p_new_curriculum_id = LAST_INSERT_ID(); -- 새로 삽입된 ID 가져오기
-        SET p_status = 0; -- 성공
-
+        SET v_new_id = LAST_INSERT_ID();
         COMMIT;
+
+		-- insert가 정상적으로 되었는지 확인
+        SELECT * FROM curriculum WHERE curriculum_id = v_new_id;
     END IF;
 END //
 
 DELIMITER ;
+
 -- 커리큘럼 수정
 DELIMITER //
 
 CREATE PROCEDURE update_curriculum(
     IN p_curriculum_id BIGINT,
-    IN p_exam_subject_id BIGINT, -- 커리큘럼이 다른 자격증으로 변경될 수 있다고 가정 (FK)
-    IN p_name VARCHAR(255),
-    IN p_description TEXT,
-    OUT p_status INT             -- 0: 성공, -1: ID 찾을 수 없음, -2: name NULL 오류, -3: FK 오류, -4: 기타 오류
+    IN p_exam_subject_id BIGINT,
+    IN p_name VARCHAR(255)
 )
 BEGIN
-    -- 에러 핸들러 선언
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        IF SQLSTATE = '23000' THEN
-            SET p_status = -3; -- FK 오류 또는 NOT NULL 제약 조건 위반 등
-        ELSE
-            SET p_status = -4; -- 기타 오류
-        END IF;
-    END;
+    UPDATE curriculum
+    SET
+        exam_subject_id = p_exam_subject_id,
+        name = p_name
+    WHERE curriculum_id = p_curriculum_id;
 
-    -- 존재하지 않는 ID에 대한 업데이트 시도 방지
-    IF NOT EXISTS (SELECT 1 FROM curriculum WHERE curriculum_id = p_curriculum_id) THEN
-        SET p_status = -1;
-    -- name이 NULL이 아니고 빈 문자열인 경우
-    ELSEIF p_name IS NOT NULL AND LTRIM(RTRIM(p_name)) = '' THEN
-        SET p_status = -2; -- name은 NULL이거나 빈 문자열일 수 없음
-    ELSE
-        START TRANSACTION;
-
-        UPDATE curriculum
-        SET
-            exam_subject_id = COALESCE(p_exam_subject_id, exam_subject_id),
-            name = COALESCE(p_name, name),
-            description = COALESCE(p_description, description)
-        WHERE
-            curriculum_id = p_curriculum_id;
-
-        -- 실제 업데이트된 행이 있는지 확인 (해당 ID가 존재하지만 변경사항이 없을 수도 있음)
-        IF ROW_COUNT() > 0 THEN
-            SET p_status = 0; -- 성공
-        ELSE
-            -- ID는 존재하지만, 업데이트할 값이 모두 NULL이거나 기존 값과 동일한 경우
-            SET p_status = 0; -- 변경 사항 없음으로 간주하고 성공으로 처리
-        END IF;
-
-        COMMIT;
-    END IF;
+    SELECT * FROM curriculum WHERE curriculum_id = p_curriculum_id;
 END //
 
 DELIMITER ;
+
 -- 커리큘럼 삭제
 DELIMITER //
 
 CREATE PROCEDURE delete_curriculum(
-    IN p_curriculum_id BIGINT,
-    OUT p_status INT             -- 0: 성공, -1: 찾을 수 없음, -2: 기타 오류 (FK 종속성 등)
+    IN p_curriculum_id BIGINT
 )
 BEGIN
-    -- 에러 핸들러 선언
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        -- 자식 테이블에 참조되는 경우 (FK 위반)
-        IF SQLSTATE = '23000' THEN
-            SET p_status = -2; -- FK 종속성 등으로 인한 삭제 실패
-        ELSE
-            SET p_status = -3; -- 기타 오류
-        END IF;
-    END;
+    DELETE FROM curriculum
+    WHERE curriculum_id = p_curriculum_id;
 
-    -- 삭제 전에 레코드가 존재하는지 확인 (멱등성)
-    IF NOT EXISTS (SELECT 1 FROM curriculum WHERE curriculum_id = p_curriculum_id) THEN
-        SET p_status = -1; -- 레코드를 찾을 수 없음
-    ELSE
-        START TRANSACTION;
-
-        DELETE FROM curriculum WHERE curriculum_id = p_curriculum_id;
-
-        -- 삭제가 성공했는지 확인
-        IF ROW_COUNT() > 0 THEN
-            SET p_status = 0; -- 성공
-        ELSE
-            -- 해당 ID는 존재하지만, 어떤 이유로 삭제되지 않음 (매우 드문 경우)
-            SET p_status = -2; -- 일반적인 오류로 처리
-        END IF;
-
-        COMMIT;
-    END IF;
+    SELECT CONCAT('커리큘럼 ID ', p_curriculum_id, ' 삭제 완료') AS message;
 END //
 
 DELIMITER ;
--- 커리큘럼 조회
-DELIMITER //
 
-CREATE PROCEDURE select_curriculum(
-    IN p_exam_subject_id BIGINT
-)
-BEGIN
-    SELECT
-        c.curriculum_id,
-        c.exam_subject_id,
-        es.name AS exam_subject_name, -- exam_subject 테이블과 조인하여 이름도 가져옴
-        c.name,
-        c.description,
-        c.created_at,
-        c.updated_at
-    FROM
-        curriculum c
-    LEFT JOIN
-        exam_subject es ON c.exam_subject_id = es.exam_subject_id
-    WHERE
-        c.exam_subject_id = p_exam_subject_id
-    ORDER BY
-        c.name; -- 필요에 따라 정렬 기준 변경
-END //
-
-DELIMITER ;
+-- 커리큘럼 조회(카테고리 = 정보처리기사)
+select * from curriculum where exam_subject_id = 1;
 
 /* 장바구니 */
 -- 커리큘럼 추가
