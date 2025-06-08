@@ -51,7 +51,7 @@ END //
 
 DELIMITER ;
 
-CALL update_user_info(3, 10);
+CALL add_favorite(3, 10);
 
 -- 즐겨찾기 해제
 DELIMITER //
@@ -92,7 +92,7 @@ DELIMITER //
 CREATE PROCEDURE read_message(IN messageIdInput BIGINT)
 BEGIN
     UPDATE message
-    SET is_read = TRUE
+    SET is_seen = TRUE
     WHERE message_id = messageIdInput;
 END //
 
@@ -103,15 +103,12 @@ CALL read_message(1);
 -- 쪽지 새로고침
 DELIMITER //
 
-CREATE PROCEDURE refresh_messages(IN userIdInput BIGINT)
+CREATE PROCEDURE refresh_messages(IN p_user_id BIGINT)
 BEGIN
     SELECT * FROM message
-    WHERE receiver_id = userIdInput
+    WHERE receiver_id = p_user_id
     ORDER BY created_at DESC
-    LIMIT 10;
 END //
-
-CALL refresh_messages(1);
 
 DELIMITER ;
 
