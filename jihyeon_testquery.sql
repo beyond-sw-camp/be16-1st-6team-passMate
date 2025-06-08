@@ -177,7 +177,7 @@ BEGIN
             updated_at = NOW()
         WHERE user_id = userIdInput;
     ELSE
-        -- 없으면 새로 삽입
+        -- 없으면 삽입
         INSERT INTO settlement_setting(user_id, settlement_day)
         VALUES (userIdInput, settlementDayInput);
     END IF;
