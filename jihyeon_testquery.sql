@@ -99,16 +99,16 @@ INSERT INTO settlement_account(user_id, bank, account_number) VALUES
 
 -- 정산 내역
 INSERT INTO settlement (settlement_account_id, payment_id, settlement_amount, settlement_date, is_completed) VALUES
-(1, 1, 100000, 1, true),
-(2, 2, 150000, 5, true),
-(3, 3, 200000, 10, false),
-(4, 4, 250000, 15, false),
-(5, 5, 300000, 20, false),
-(6, 6, 350000, 25, false),
-(7, 7, 400000, 28, false),
-(8, 8, 450000, 30, false),
-(9, 9, 500000, 3, true),
-(10, 10, 550000, 7, true);
+(5, 8, 75000, NOW(), true),
+(3, 6, 54000, NOW(), true),
+(2, 4, 62000, NOW(), true),
+(7, 3, 81000, NOW(), true),
+(6, 2, 90500, NOW(), true),
+(4, 5, 45000, NOW(), true),
+(1, 9, 99000, NOW(), true),
+(8, 7, 37000, NOW(), false),
+(9, 1, 66000, NOW(), false),
+(10, 10, 72000, NOW(), false);
 
 -- 결제 내역
 INSERT INTO payment (user_id, curriculum_sale_id, method_id, status, date, confirm) VALUES
