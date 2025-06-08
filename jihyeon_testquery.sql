@@ -25,17 +25,17 @@ INSERT INTO settlement (settlement_account_id, payment_id, settlement_amount, se
 (10, 10, 72000, NOW(), false);
 
 -- 결제 내역
-INSERT INTO payment (user_id, curriculum_sale_id, method_id, status, date, confirm) VALUES
-(1, 1, 1, 'STANBY', NOW(), false),
-(2, 3, 2, 'IN_PROGRESS', NOW(), true),
-(3, 2, 3, 'COMPLETE', NOW(), true),
-(4, 4, 4, 'STANBY', NOW(), false),
-(5, 5, 5, 'IN_PROGRESS', NOW(), false),
-(6, 6, 6, 'COMPLETE', NOW(), true),
-(7, 7, 7, 'STANBY', NOW(), false),
-(8, 8, 8, 'IN_PROGRESS', NOW(), true),
-(9, 9, 9, 'COMPLETE', NOW(), true),
-(10, 10, 10, 'STANBY', NOW(), false);
+INSERT INTO payment (user_id, curriculum_sale_id, method_id, status, date, confirm, is_refund) VALUES
+(1, 1, 1, 'STANBY', '2025-06-01 10:00:00', false, false),
+(2, 2, 2, 'IN_PROGRESS', '2025-06-02 11:00:00', false, false),
+(3, 3, 3, 'COMPLETE', '2025-06-03 12:00:00', true, false),
+(4, 4, 4, 'STANBY', '2025-06-04 13:00:00', false, false),
+(5, 5, 5, 'IN_PROGRESS', '2025-06-05 14:00:00', false, false),
+(6, 6, 6, 'COMPLETE', '2025-06-06 15:00:00', true, false),
+(7, 7, 7, 'STANBY', '2025-06-07 16:00:00', false, false),
+(8, 8, 8, 'IN_PROGRESS', '2025-06-08 17:00:00', false, false),
+(9, 9, 9, 'COMPLETE', '2025-06-09 18:00:00', true, false),
+(10, 10, 10, 'STANBY', '2025-06-10 19:00:00', false, false);
 
 -- 알림 내역
 INSERT INTO notification (user_id, content, is_seen, created_at) VALUES
