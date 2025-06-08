@@ -166,21 +166,28 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </details>
 <details>
   <summary>29. 일정 생성</summary>
+    <img width="765" alt="일정 생성" src="https://github.com/user-attachments/assets/e616b3e3-dca6-4da9-b3e2-3d67bccb671d" />
+    <img width="1226" alt="일정 등록 프로시저" src="https://github.com/user-attachments/assets/98ebe52e-50a9-414a-8670-d690d60b1a40" />
 </details>
 <details>
   <summary>30. 일정 수정</summary>
+    <img width="627" alt="일정 수정" src="https://github.com/user-attachments/assets/e788603e-ca61-452e-80ca-364d442cb8a3" />
 </details>
 <details>
   <summary>31. 일정 삭제</summary>
+    <img width="522" alt="일정 삭제" src="https://github.com/user-attachments/assets/bca8c057-7142-4356-a745-012fa4470dd8" />
 </details>
 <details>
   <summary>32. 카테고리 선택</summary>
+    <img width="797" alt="카테고리 상세 추가" src="https://github.com/user-attachments/assets/b4bf4536-4997-4fa8-aaee-2e74ec257073" />
 </details>
 <details>
   <summary>33. 복습 주기 / 회차 선택</summary>
+    <img width="691" alt="복습 주기 등록" src="https://github.com/user-attachments/assets/957e2ab2-e7f3-4f99-b3c9-db58193e6d17" />
 </details>
 <details>
   <summary>34. To Do List 생성</summary>
+    <img width="564" alt="할일 등록" src="https://github.com/user-attachments/assets/275bc846-55a0-497c-a9fc-91d3ce648e03" />
 </details>
 <details>
   <summary>35. To Do List 수정</summary>
