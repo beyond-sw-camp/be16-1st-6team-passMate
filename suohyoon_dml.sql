@@ -463,76 +463,58 @@ select * from curriculum where exam_subject_id = 1;
 DELIMITER //
 
 CREATE PROCEDURE add_cart(
-    IN p_curriculum_id BIGINT,
     IN p_user_id BIGINT,
-    OUT p_status INT              -- 0: 성공, -1: 필수 값 누락, -2: 중복, -3: FK 오류, -4: 기타 오류
+    IN p_curriculum_sale_id BIGINT
 )
 BEGIN
-    -- 에러 핸들러 선언
+    DECLARE v_new_id BIGINT;
+
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         ROLLBACK;
-        IF SQLSTATE = '23000' THEN -- Integrity constraint violation (FK or NOT NULL)
-            SET p_status = -3; -- FK 오류 또는 NOT NULL 제약 조건 위반 등
-        ELSE
-            SET p_status = -4; -- 기타 오류
-        END IF;
+        SELECT '오류 발생' AS message, NULL AS cart_id;
     END;
 
-    -- 필수 값 (curriculum_id, user_id) 검사
-    IF p_curriculum_id IS NULL OR p_user_id IS NULL THEN
-        SET p_status = -1;
-    ELSE
-        -- 중복 추가 방지
-        IF EXISTS (SELECT 1 FROM cart WHERE curriculum_id = p_curriculum_id AND user_id = p_user_id) THEN
-            SET p_status = -2; -- 이미 장바구니에 존재함
-        ELSE
-            START TRANSACTION;
-
-            INSERT INTO cart (curriculum_id, user_id)
-            VALUES (p_curriculum_id, p_user_id);
-
-            SET p_status = 0; -- 성공
-
-            COMMIT;
-        END IF;
-    END IF;
-END //
-
-DELIMITER ;
--- 커리큘럼 삭제
-DELIMITER //
-
-CREATE PROCEDURE delete_cart(
-    IN p_cart_id BIGINT,
-    OUT p_status INT             -- 0: 성공, -1: 찾을 수 없음, -2: 기타 오류
-)
-BEGIN
-    -- 에러 핸들러 선언
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        SET p_status = -2; -- 기타 오류
-    END;
-
-    -- 삭제 전에 레코드가 존재하는지 확인 (멱등성)
-    IF NOT EXISTS (SELECT 1 FROM cart WHERE cart_id = p_cart_id) THEN
-        SET p_status = -1; -- 레코드를 찾을 수 없음
+    IF p_user_id IS NULL THEN
+        SELECT '필수 값 누락' AS message, NULL AS cart_id;
     ELSE
         START TRANSACTION;
 
-        DELETE FROM cart WHERE cart_id = p_cart_id;
+        INSERT INTO cart (user_id, curriculum_sale_id)
+        VALUES (p_user_id, p_curriculum_sale_id);
 
-        -- 삭제가 성공했는지 확인
-        IF ROW_COUNT() > 0 THEN
-            SET p_status = 0; -- 성공
-        ELSE
-            -- 해당 ID는 존재하지만, 어떤 이유로 삭제되지 않음 (매우 드문 경우)
-            SET p_status = -2; -- 일반적인 오류로 처리
-        END IF;
-
+        SET v_new_id = LAST_INSERT_ID();
         COMMIT;
+
+		-- insert가 정상적으로 되었는지 확인
+        SELECT * FROM cart WHERE cart_id = v_new_id;
     END IF;
 END //
 
 DELIMITER ;
+-- 커리큘럼 장바구니에서 삭제
+DELIMITER //
+
+CREATE PROCEDURE delete_cart(
+    IN p_cart_id BIGINT
+)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT '오류 발생' AS message, NULL AS cart_id;
+    END;
+
+    IF p_cart_id IS NULL THEN
+        SELECT '필수 값 누락' AS message, NULL AS cart_id;
+    ELSE
+        START TRANSACTION;
+		
+        DELETE FROM cart WHERE cart_id = p_cart_id;
+        
+        COMMIT;
+
+	-- delete가 정상적으로 되었는지 확인
+        SELECT * FROM cart WHERE cart_id = p_cart_id;
+    END IF;
+END //
