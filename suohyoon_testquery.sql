@@ -175,33 +175,64 @@ CALL delete_curriculum(2);
 select * from curriculum where exam_subject_id = 1;
 
 /* 장바구니 */
-/* 커리큘럼 추가 */
-SET @status = 0;
-CALL add_cart(1, 1, @status); -- user_id 1의 장바구니에 curriculum_id 1 추가
-SELECT @status AS Status;
+-- 커리큘럼 추가
+DELIMITER //
 
-SET @status = 0;
-CALL add_cart(1, 1, @status); -- 중복 추가 시도
-SELECT @status AS Status;
+CREATE PROCEDURE add_cart(
+    IN p_user_id BIGINT,
+    IN p_curriculum_sale_id BIGINT
+)
+BEGIN
+    DECLARE v_new_id BIGINT;
 
-SET @status = 0;
-CALL add_cart(999, 1, @status); -- 존재하지 않는 curriculum_id 시도
-SELECT @status AS Status;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT '오류 발생' AS message, NULL AS cart_id;
+    END;
 
-SET @status = 0;
-CALL add_cart(1, 999, @status); -- 존재하지 않는 user_id 시도
-SELECT @status AS Status;
+    IF p_user_id IS NULL THEN
+        SELECT '필수 값 누락' AS message, NULL AS cart_id;
+    ELSE
+        START TRANSACTION;
 
-/* 커리큘럼 삭제 */
-SET @status = 0;
--- 먼저 장바구니에 항목을 추가하여 삭제할 항목을 만듭니다. (예: cart_id가 1인 항목)
--- CALL AddCurriculumToCart(1, 1, @dummy_status);
-CALL delete_cart(1, @status); -- cart_id가 1인 항목 삭제
-SELECT @status AS Status;
+        INSERT INTO cart (user_id, curriculum_sale_id)
+        VALUES (p_user_id, p_curriculum_sale_id);
 
-SET @status = 0;
-CALL delete_cart(999, @status); -- 존재하지 않는 cart_id 시도
-SELECT @status AS Status;
+        SET v_new_id = LAST_INSERT_ID();
+        COMMIT;
 
+		-- insert가 정상적으로 되었는지 확인
+        SELECT * FROM cart WHERE cart_id = v_new_id;
+    END IF;
+END //
+
+DELIMITER ;
+-- 커리큘럼 장바구니에서 삭제
+DELIMITER //
+
+CREATE PROCEDURE delete_cart(
+    IN p_cart_id BIGINT
+)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT '오류 발생' AS message, NULL AS cart_id;
+    END;
+
+    IF p_cart_id IS NULL THEN
+        SELECT '필수 값 누락' AS message, NULL AS cart_id;
+    ELSE
+        START TRANSACTION;
+		
+        DELETE FROM cart WHERE cart_id = p_cart_id;
+        
+        COMMIT;
+
+		-- delete가 정상적으로 되었는지 확인
+        SELECT * FROM cart WHERE cart_id = p_cart_id;
+    END IF;
+END //
 
 
