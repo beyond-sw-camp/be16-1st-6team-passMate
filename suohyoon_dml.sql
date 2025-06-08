@@ -129,49 +129,14 @@ BEGIN
     WHERE category_id = p_category_id;
 
     COMMIT;
+    
+    -- 4. update 여부 조회
+    SELECT * FROM category WHERE category_id = p_category_id;
 END //
 
 DELIMITER ;
 
 -- 카테고리 삭제
-DELIMITER //
-
-CREATE PROCEDURE delete_category (
-    IN p_category_id BIGINT
-)
-BEGIN
-    DECLARE v_count INT;
-
-    -- 예외 발생 시 롤백 및 사용자 정의 메시지 처리
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = '카테고리 삭제 중 예외가 발생했습니다. 롤백되었습니다.';
-    END;
-
-    START TRANSACTION;
-
-    -- 삭제할 카테고리 존재 여부 확인
-    SELECT COUNT(*) INTO v_count
-    FROM category
-    WHERE category_id = p_category_id;
-
-    IF v_count = 0 THEN
-        ROLLBACK;
-        SIGNAL SQLSTATE '45001'
-        SET MESSAGE_TEXT = '해당 category_id가 존재하지 않아 삭제할 수 없습니다.';
-    END IF;
-
-    -- 삭제 실행
-    DELETE FROM category
-    WHERE category_id = p_category_id;
-
-    COMMIT;
-END //
-
-DELIMITER ;
-
 DELIMITER //
 
 CREATE PROCEDURE delete_category (
@@ -205,6 +170,9 @@ BEGIN
     WHERE category_id = p_category_id;
 
     COMMIT;
+    
+    -- 삭제되었는지 전체 조회를 통해 확인
+    select * from category;
 END //
 
 DELIMITER ;
