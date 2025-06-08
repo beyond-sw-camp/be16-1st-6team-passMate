@@ -1,132 +1,195 @@
--- 정산 계좌
-INSERT INTO settlement_account(user_id, bank, account_number) VALUES
-(1, '국민', '1234567890123456781'),
-(2, '기업', '2234567890123456782'),
-(3, '우리', '3234567890123456783'),
-(4, '하나', '4234567890123456784'),
-(5, '농협', '5234567890123456785'),
-(6, '신한', '6234567890123456786'),
-(7, '카카오', '7234567890123456787'),
-(8, '기업업', '8234567890123456788'),
-(9, '케이뱅크', '9234567890123456789'),
-(10, '토스', '1034567890123456780');
-
--- 정산 내역
-INSERT INTO settlement (settlement_account_id, payment_id, settlement_amount, settlement_date, is_completed) VALUES
-(5, 8, 75000, NOW(), true),
-(3, 6, 54000, NOW(), true),
-(2, 4, 62000, NOW(), true),
-(7, 3, 81000, NOW(), true),
-(6, 2, 90500, NOW(), true),
-(4, 5, 45000, NOW(), true),
-(1, 9, 99000, NOW(), true),
-(8, 7, 37000, NOW(), false),
-(9, 1, 66000, NOW(), false),
-(10, 10, 72000, NOW(), false);
-
--- 결제 내역
-INSERT INTO payment (user_id, curriculum_sale_id, method_id, status, date, confirm, is_refund) VALUES
-(1, 1, 1, 'STANBY', '2025-06-01 10:00:00', false, false),
-(2, 2, 2, 'IN_PROGRESS', '2025-06-02 11:00:00', false, false),
-(3, 3, 3, 'COMPLETE', '2025-06-03 12:00:00', true, false),
-(4, 4, 4, 'STANBY', '2025-06-04 13:00:00', false, false),
-(5, 5, 5, 'IN_PROGRESS', '2025-06-05 14:00:00', false, false),
-(6, 6, 6, 'COMPLETE', '2025-06-06 15:00:00', true, false),
-(7, 7, 7, 'STANBY', '2025-06-07 16:00:00', false, false),
-(8, 8, 8, 'IN_PROGRESS', '2025-06-08 17:00:00', false, false),
-(9, 9, 9, 'COMPLETE', '2025-06-09 18:00:00', true, false),
-(10, 10, 10, 'STANBY', '2025-06-10 19:00:00', false, false);
-
--- 알림 내역
-INSERT INTO notification (user_id, content, is_seen, created_at) VALUES
-(3, '알림테스트 입니다.', false, NOW()),
-(7, '알림테스트 입니다.', false, NOW()),
-(12, '알림테스트 입니다.', true, NOW()),
-(5, '알림테스트 입니다.', false, NOW()),
-(18, '알림테스트 입니다.', false, NOW()),
-(3, '알림테스트 입니다.', true, NOW()),
-(15, '알림테스트 입니다.', false, NOW()),
-(20, '알림테스트 입니다.', true, NOW()),
-(1, '알림테스트 입니다.', false, NOW()),
-(10, '알림테스트 입니다.', true, NOW());
-
--- 알림 내역 프로시저
+-- 사용자 정보 조회
 DELIMITER //
 
-CREATE PROCEDURE insert_notifications()
+CREATE PROCEDURE get_user_info(IN p_user_id BIGINT)
 BEGIN
-  DECLARE i INT DEFAULT 1;
-  DECLARE rand_user_id INT;
-
-  WHILE i <= 10 DO
-    SET rand_user_id = FLOOR(1 + RAND() * 20);
-
-    INSERT INTO notification (
-      user_id, content, is_seen, created_at
-    ) VALUES (
-      rand_user_id,
-      CONCAT('알림 테스트 입니다. ', rand_user_id),
-      FALSE,
-      NOW()
-    );
-
-    SET i = i + 1;
-  END WHILE;
+    SELECT * FROM user WHERE user_id = p_user_id;
 END //
 
 DELIMITER ;
 
--- 쪽지 보내기 프로시저
+CALL get_user_info(1);
+
+-- 사용자 정보 수정
 DELIMITER //
 
-CREATE PROCEDURE insert_messages()
+CREATE PROCEDURE update_user_info(
+    IN userIdInput BIGINT,
+    IN emailInput VARCHAR(100),
+    IN passwordInput VARCHAR(100),
+    IN nicknameInput VARCHAR(20),
+    IN imageInput VARCHAR(255),
+    IN jobInput VARCHAR(255)
+)
 BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE sender_id INT;
-    DECLARE receiver_id INT;
-
-    WHILE i <= 10 DO
-        SET sender_id = FLOOR(1 + (RAND() * 20));
-        SET receiver_id = FLOOR(1 + (RAND() * 20));
-
-        -- 자기 자신에게는 쪽지를 보낼 수 X
-        IF sender_id != receiver_id THEN
-            INSERT INTO message (sender_id, receiver_id, contents)
-            VALUES (
-                sender_id,
-                receiver_id,
-                CONCAT('쪽지test 번호: ', i)
-            );
-            SET i = i + 1;
-        END IF;
-    END WHILE;
+    UPDATE user
+    SET email = emailInput,
+        password = passwordInput,
+        nickname = nicknameInput,
+        profile_image = imageInput,
+        job = jobInput,
+        updated_at = NOw()
+        
+    WHERE user_id = userIdInput;
 END //
 
 DELIMITER ;
 
--- 좋아요 생성 프로시저
+CALL update_user_info(1, "test@naver.com", "test1234", "test", "https://cdn.animaltoc.com/news/photo/202410/1409_6515_3838.jpg", "개발")
+
+-- 즐겨찾기 설정
 DELIMITER //
 
-CREATE PROCEDURE insert_favorites()
+CREATE PROCEDURE add_favorite(
+    IN userIdInput BIGINT,
+    IN favoritIdInput BIGINT
+)
 BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE userId BIGINT;
-    DECLARE favoriteUserId BIGINT;
-
-    WHILE i <= 10 DO
-        -- user_id와 favorite_user_id가 같지 않도록 설정
-        SET userId = FLOOR(1 + RAND() * 20);
-        SET favoriteUserId = FLOOR(1 + RAND() * 20);
-
-        WHILE favoriteUserId = userId DO
-            SET favoriteUserId = FLOOR(1 + RAND() * 20);
-        END WHILE;
-
-        INSERT INTO favorite (user_id, favorite_user_id)
-        VALUES (userId, favoriteUserId);
-
-        SET i = i + 1;
-    END WHILE;
+    INSERT INTO favorite (user_id, favorite_user_id)
+    VALUES (userIdInput, favoritIdInput);
 END //
 
 DELIMITER ;
+
+CALL update_user_info(3, 10);
+
+-- 즐겨찾기 해제
+DELIMITER //
+
+CREATE PROCEDURE delete_favorite(
+    IN userIdInput BIGINT,
+    IN favoritIdInput BIGINT
+)
+BEGIN
+    DELETE FROM favorite
+    WHERE user_id = userIdInput AND favorite_user_id = favoritIdInput;
+END //
+
+DELIMITER ;
+
+CALL delete_favorite(3, 10);
+
+-- 쪽지 보내기
+DELIMITER //
+
+CREATE PROCEDURE send_message(
+    IN senderIdInput BIGINT,
+    IN receiverIdInput BIGINT,
+    IN contentsInput TEXT
+)
+BEGIN
+    INSERT INTO message (sender_id, receiver_id, contents)
+    VALUES (senderIdInput, receiverIdInput, contentsInput);
+END //
+
+DELIMITER ;
+
+CALL send_message(1, 7, "쪽지 테스트 입니다.")
+
+-- 쪽지 읽기
+DELIMITER //
+
+CREATE PROCEDURE read_message(IN messageIdInput BIGINT)
+BEGIN
+    UPDATE message
+    SET is_read = TRUE
+    WHERE message_id = messageIdInput;
+END //
+
+DELIMITER ;
+
+CALL read_message(1);
+
+-- 쪽지 새로고침
+DELIMITER //
+
+CREATE PROCEDURE refresh_messages(IN userIdInput BIGINT)
+BEGIN
+    SELECT * FROM message
+    WHERE receiver_id = userIdInput
+    ORDER BY created_at DESC
+    LIMIT 10;
+END //
+
+CALL refresh_messages(1);
+
+DELIMITER ;
+
+-- 쪽지 삭제
+DELIMITER //
+
+CREATE PROCEDURE delete_message(IN messageIdInput BIGINT)
+BEGIN
+    DELETE FROM message WHERE message_id = messageIdInput;
+END //
+
+DELIMITER ;
+
+CALL delete_message(1);
+
+-- 정산 조회
+DELIMITER //
+
+CREATE PROCEDURE get_settlement_info(IN userIdInput BIGINT)
+BEGIN
+    SELECT s.*
+    FROM settlement s
+    JOIN settlement_account sa ON s.settlement_account_id = sa.settlement_account_id
+    WHERE sa.user_id = userIdInput;
+END //
+
+DELIMITER ;
+
+-- 정산 처리
+DELIMITER //
+
+CREATE PROCEDURE processSettlement()
+BEGIN
+    START TRANSACTION;
+
+    UPDATE settlement s
+    JOIN settlement_account sa ON s.settlement_account_id = sa.settlement_account_id
+    JOIN settlement_setting ss ON sa.user_id = ss.user_id
+    SET s.is_completed = true,
+        s.settlement_date = NOW()
+    WHERE s.is_completed = false
+      AND ss.settlement_day IS NOT NULL
+      AND DAY(CURDATE()) >= ss.settlement_day;
+
+    COMMIT;
+END;
+//
+
+DELIMITER ;
+
+-- 정산일 설정
+DELIMITER //
+
+CREATE PROCEDURE setSettlementDay(
+    IN userIdInput BIGINT,
+    IN settlementDayInput TINYINT
+)
+BEGIN
+    DECLARE settingExists INT;
+
+    -- 이미 설정이 있는지 확인
+    SELECT COUNT(*) INTO settingExists
+    FROM settlement_setting
+    WHERE user_id = userIdInput;
+
+    IF settingExists > 0 THEN
+        -- 있으면 업데이트
+        UPDATE settlement_setting
+        SET settlement_day = settlementDayInput,
+            updated_at = NOW()
+        WHERE user_id = userIdInput;
+    ELSE
+        -- 없으면 새로 삽입
+        INSERT INTO settlement_setting(user_id, settlement_day)
+        VALUES (userIdInput, settlementDayInput);
+    END IF;
+END //
+
+DELIMITER ;
+
+CALL setSettlementDay(1, 5);
