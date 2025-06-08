@@ -1,89 +1,3 @@
--- 유저 생성 프로시저저
-
-DELIMITER //
-
-CREATE PROCEDURE insert_users()
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    WHILE i <= 20 DO
-        INSERT INTO user (
-            email,
-            nickname,
-            password,
-            role,
-            profile_image,
-            job
-        )
-        VALUES (
-            CONCAT('user', i, '@naver.com'),
-            CONCAT('user', i),
-            'encrypted_password',
-            'USER',
-            NULL,
-            NULL
-        );
-        SET i = i + 1;
-    END WHILE;
-END //
-
-DELIMITER ;
-
-
--- 쪽지 보내기 프로시저
-DELIMITER //
-
-CREATE PROCEDURE insert_messages()
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE sender_id INT;
-    DECLARE receiver_id INT;
-
-    WHILE i <= 10 DO
-        SET sender_id = FLOOR(1 + (RAND() * 20));
-        SET receiver_id = FLOOR(1 + (RAND() * 20));
-
-        -- 자기 자신에게는 쪽지를 보낼 수 X
-        IF sender_id != receiver_id THEN
-            INSERT INTO message (sender_id, receiver_id, contents)
-            VALUES (
-                sender_id,
-                receiver_id,
-                CONCAT('쪽지test 번호: ', i)
-            );
-            SET i = i + 1;
-        END IF;
-    END WHILE;
-END //
-
-DELIMITER ;
-
--- 좋아요 생성 프로시저
-DELIMITER //
-
-CREATE PROCEDURE insert_favorites()
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE userId BIGINT;
-    DECLARE favoriteUserId BIGINT;
-
-    WHILE i <= 10 DO
-        -- user_id와 favorite_user_id가 같지 않도록 설정
-        SET userId = FLOOR(1 + RAND() * 20);
-        SET favoriteUserId = FLOOR(1 + RAND() * 20);
-
-        WHILE favoriteUserId = userId DO
-            SET favoriteUserId = FLOOR(1 + RAND() * 20);
-        END WHILE;
-
-        INSERT INTO favorite (user_id, favorite_user_id)
-        VALUES (userId, favoriteUserId);
-
-        SET i = i + 1;
-    END WHILE;
-END //
-
-DELIMITER ;
-
 -- 정산 계좌
 INSERT INTO settlement_account(user_id, bank, account_number) VALUES
 (1, '국민', '1234567890123456781'),
@@ -158,6 +72,61 @@ BEGIN
 
     SET i = i + 1;
   END WHILE;
+END //
+
+DELIMITER ;
+
+-- 쪽지 보내기 프로시저
+DELIMITER //
+
+CREATE PROCEDURE insert_messages()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE sender_id INT;
+    DECLARE receiver_id INT;
+
+    WHILE i <= 10 DO
+        SET sender_id = FLOOR(1 + (RAND() * 20));
+        SET receiver_id = FLOOR(1 + (RAND() * 20));
+
+        -- 자기 자신에게는 쪽지를 보낼 수 X
+        IF sender_id != receiver_id THEN
+            INSERT INTO message (sender_id, receiver_id, contents)
+            VALUES (
+                sender_id,
+                receiver_id,
+                CONCAT('쪽지test 번호: ', i)
+            );
+            SET i = i + 1;
+        END IF;
+    END WHILE;
+END //
+
+DELIMITER ;
+
+-- 좋아요 생성 프로시저
+DELIMITER //
+
+CREATE PROCEDURE insert_favorites()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE userId BIGINT;
+    DECLARE favoriteUserId BIGINT;
+
+    WHILE i <= 10 DO
+        -- user_id와 favorite_user_id가 같지 않도록 설정
+        SET userId = FLOOR(1 + RAND() * 20);
+        SET favoriteUserId = FLOOR(1 + RAND() * 20);
+
+        WHILE favoriteUserId = userId DO
+            SET favoriteUserId = FLOOR(1 + RAND() * 20);
+        END WHILE;
+
+        INSERT INTO favorite (user_id, favorite_user_id)
+        VALUES (userId, favoriteUserId);
+
+        SET i = i + 1;
+    END WHILE;
 END //
 
 DELIMITER ;
