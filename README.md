@@ -70,4 +70,144 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 ## ERD
 
 ## Test Query
-
+<details>
+  <summary>1. 회원가입</summary>
+</details>
+<details>
+  <summary>2. 로그인</summary>
+</details>
+<details>
+  <summary>3. 로그아웃</summary>
+</details>
+<details>
+  <summary>4. 회원 탈퇴</summary>
+</details>
+<details>
+  <summary>5. 내 정보 조회</summary>
+</details>
+<details>
+  <summary>6. 내 정보 수정</summary>
+</details>
+<details>
+  <summary>7. 정산일 설정</summary>
+</details>
+<details>
+  <summary>8. 정산조회</summary>
+</details>
+<details>
+  <summary>9. 정산처리</summary>
+</details>
+<details>
+  <summary>10. 커리큘럼 등록</summary>
+</details>
+<details>
+  <summary>11. 커리큘럼 수정</summary>
+</details>
+<details>
+  <summary>12. 커리큘럼 삭제</summary>
+</details>
+<details>
+  <summary>13. 커리큘럼 조회</summary>
+</details>
+<details>
+  <summary>14. 결제 수단 추가</summary>
+</details>
+<details>
+  <summary>15. 결제 수단 삭제</summary>
+</details>
+<details>
+  <summary>16. 환불</summary>
+</details>
+<details>
+  <summary>17. 구매가능한 커리큘럼 조회</summary>
+</details>
+<details>
+  <summary>18. 구매</summary>
+</details>
+<details>
+  <summary>19. 구매 확정</summary>
+</details>
+<details>
+  <summary>20. 결제 내역 조회</summary>
+</details>
+<details>
+  <summary>21. 자격증 상세 정보 조회</summary>
+</details>
+<details>
+  <summary>22. 자격증 상세 정보 생성</summary>
+</details>
+<details>
+  <summary>23. 자격증 상세 정보 수정</summary>
+</details>
+<details>
+  <summary>24. 자격증 상세 정보 삭제</summary>
+</details>
+<details>
+  <summary>25. 카테고리 조회</summary>
+</details>
+<details>
+  <summary>26. 카테고리 생성</summary>
+</details>
+<details>
+  <summary>27. 카테고리 수정</summary>
+</details>
+<details>
+  <summary>28. 카테고리 삭제</summary>
+</details>
+<details>
+  <summary>29. 일정 생성</summary>
+</details>
+<details>
+  <summary>30. 일정 수정</summary>
+</details>
+<details>
+  <summary>31. 일정 삭제</summary>
+</details>
+<details>
+  <summary>32. 카테고리 선택</summary>
+</details>
+<details>
+  <summary>33. 복습 주기 / 회차 선택</summary>
+</details>
+<details>
+  <summary>34. To Do List 생성</summary>
+</details>
+<details>
+  <summary>35. To Do List 수정</summary>
+</details>
+<details>
+  <summary>36. To Do List 삭제</summary>
+</details>
+<details>
+  <summary>37. 노트 생성</summary>
+</details>
+<details>
+  <summary>38. 노트 수정</summary>
+</details>
+<details>
+  <summary>39. 노트 삭제</summary>
+</details>
+<details>
+  <summary>40. 커리큘럼 추가</summary>
+</details>
+<details>
+  <summary>41. 커리큘럼 삭제</summary>
+</details>
+<details>
+  <summary>42. 즐겨찾기 설정</summary>
+</details>
+<details>
+  <summary>43. 즐겨찾기 해제</summary>
+</details>
+<details>
+  <summary>44. 쪽지 보내기</summary>
+</details>
+<details>
+  <summary>45. 쪽지함 새로고침</summary>
+</details>
+<details>
+  <summary>46. 쪽지 읽기</summary>
+</details>
+<details>
+  <summary>47. 쪽지 삭제</summary>
+</details>
