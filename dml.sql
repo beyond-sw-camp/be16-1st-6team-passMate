@@ -31,17 +31,31 @@ select * from curriculum where exam_subject_id = ?;
 
 /* 결제 및 구매 */
 -- 결제수단 추가
-insert into method() values();
+insert into method(user_id, type, account) values(유저가 제공한 정보);
+-- 예시
+-- insert 
+-- into method(user_id, type, account) 
+-- values(1, '카드', '1234-5678-1234-5678');
+
 -- 결제 수단 삭제
-delete method where payment_id = ?;
+update method set is_deleted=true where method_id = ?; -- payment 테이블에 외래키 걸려있어서 삭제 불가능 -> method 에 활성, 비활성 구분 가능한 컬럼 하나 추가해서 관리하면 될듯
+-- alter table method add column is_deleted boolean default false;
+
 -- 환불
-delete payment where payment_id = ?;
+update payment set is_refund=true where payment_id = ? and confirm=false; -- delete가 맞나? 컬럼 하나 환불여부로 추가해서 관리하는게 좋을듯
+-- alter table payment add column is_refund boolean default false;
+
 -- 구매 가능한 커리큘럼 조회
-select * from curriculum_sale where is_seen = true;
+select * from curriculum_sale where is_seen = true; 
+-- 사용자가 원하는 시험을 필터링 한다고 가정하면
+select * from curriculu_sale inner join exam_subject on exam_subject_id=사용자가 원하는 시험 종목 id where is_seen = true;
+
 -- 구매
-insert into payment() values();
+insert into payment(user_id, curriculum_sale_id, method_id, status) values(1, 1, 1, 'STANBY');
+
 -- 구매확정
 update payment set confirm = true where payment_id = ?;
+
 -- 결제 내역 조회
 select * from payment where user_id = ?;
 
