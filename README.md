@@ -72,15 +72,19 @@ https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK
 ## Test Query
 <details>
   <summary>1. 회원가입</summary>
+    <img width="856" alt="스크린샷 2025-06-09 오전 9 38 27" src="https://github.com/user-attachments/assets/905684d8-1e4c-470e-8b24-2f6bdf2c5a73" />
 </details>
 <details>
   <summary>2. 로그인</summary>
+    <img width="682" alt="스크린샷 2025-06-09 오전 9 42 29" src="https://github.com/user-attachments/assets/280d6228-bcf0-4ddd-9c45-5c45cc55dfe1" />
+    <img width="665" alt="스크린샷 2025-06-09 오전 9 42 49" src="https://github.com/user-attachments/assets/0de1b5fe-d939-4061-9b58-8d3b26799f0c" />
 </details>
 <details>
   <summary>3. 로그아웃</summary>
 </details>
 <details>
   <summary>4. 회원 탈퇴</summary>
+    <img width="783" alt="스크린샷 2025-06-09 오전 9 44 14" src="https://github.com/user-attachments/assets/e875af3b-45e4-446f-90ab-2a9a21cf4e33" />
 </details>
 <details>
   <summary>5. 내 정보 조회</summary>
