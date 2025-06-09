@@ -66,7 +66,7 @@ https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5w
 ## WBS
 https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274
 ## ERD
-<img src="https://github.com/user-attachments/assets/dc7fcc37-1838-46f1-801c-69ab4639ad8f">
+<img src="https://github.com/user-attachments/assets/71ecfbdb-5928-4498-8e81-664bfb6246a5">
 https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK
 
 ## Test Query
