@@ -83,7 +83,7 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 
 <div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
   <a href='https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274' style="text-decoration: none; color: inherit;">
-    요구사항 명세서
+    WBS
   </a>
 </div>
 
