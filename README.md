@@ -85,10 +85,9 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </details>
 
 ## 요구사항 정의 및 명세서(SRS)
-<details>
-  <summary>요구사항 명세서 보기</summary>
-   <img width="541" alt="image" src="https://github.com/user-attachments/assets/8fae1045-83d5-4ef5-83aa-bcf0de21f684" />
-</details>
+
+<img width="541" alt="image" src="https://github.com/user-attachments/assets/8fae1045-83d5-4ef5-83aa-bcf0de21f684" />
+
 
 <div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
   <a href='https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=1725882102#gid=1725882102' style="text-decoration: none; color: inherit;">
@@ -97,10 +96,8 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 </div>
 
 ## WBS
-<details>
-  <summary>WBS 보기</summary>
+
    <img width="1069" alt="image" src="https://github.com/user-attachments/assets/3e6e2e05-cce3-40ae-acb1-c79b1b82033a" />
-</details>
 
 <div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
   <a href='https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274' style="text-decoration: none; color: inherit;">
@@ -110,10 +107,8 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
 
 
 ## ERD
-<details>
-  <summary>ERD 보기</summary>
+
    <img width="1069" alt="image" src="https://github.com/user-attachments/assets/6542dcdf-0ea8-4090-bc7c-f7163ef0e6c4" />
-</details>
 
 <div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
   <a href='https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK' style="text-decoration: none; color: inherit;">
