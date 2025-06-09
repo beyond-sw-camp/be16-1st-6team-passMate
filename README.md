@@ -63,6 +63,31 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   - 관심 게시자 구독
   - 원하는 커리큘럼을 구매해 내걸로 커스터마이징
 - **결제 시스템** 연동 (카카오페이, 카드 등)
+
+## UI 래퍼런스 참고
+<details>
+    <summary> 자격증 정보 관리
+        <img width="1006" alt="스크린샷 2025-06-09 오후 12 06 06" src="https://github.com/user-attachments/assets/0e531d3d-e801-42f6-b1cd-941314646bfa" />
+        <img width="905" alt="스크린샷 2025-06-09 오후 12 06 17" src="https://github.com/user-attachments/assets/db0218c5-6f72-46c0-8f18-a4346c0d376e" />    
+    </summary>
+</details>
+<details>
+    <summary> 커리큘럼 및 일정 관리
+        <img width="1439" alt="스크린샷 2025-06-09 오후 12 32 29" src="https://github.com/user-attachments/assets/463d27d3-6f34-4ffb-aec0-766d6fcf4450" />
+        <img width="449" alt="스크린샷 2025-06-09 오후 12 39 04" src="https://github.com/user-attachments/assets/7f24b53e-c5d5-4ec7-a310-f758dcb7454a" />
+    </summary>
+</details>
+<details>
+    <summary> 판매 관리
+         <img width="1439" alt="스크린샷 2025-06-09 오후 12 32 29" src="https://github.com/user-attachments/assets/ce38aa06-5ae0-47e0-84c9-f44d28baad58" />
+    </summary>
+</details>
+<details>
+    <summary> 결제 관리
+        <img width="730" alt="스크린샷 2025-06-09 오후 12 33 59" src="https://github.com/user-attachments/assets/ab917747-273d-4909-b25d-3d845ad37ce1" />
+    </summary>
+</details>
+
 ## 요구사항 정의 및 명세서(SRS)
 <details>
   <summary>요구사항 명세서 보기</summary>
