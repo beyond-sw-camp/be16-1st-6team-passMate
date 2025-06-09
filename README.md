@@ -220,18 +220,23 @@ https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK
 </details>
 <details>
   <summary>35. To Do List 수정</summary>
+    <img width="654" alt="스크린샷 2025-06-09 오전 12 21 02" src="https://github.com/user-attachments/assets/d51eb9b1-1a54-4f17-b913-552dc86c62a2" />
 </details>
 <details>
   <summary>36. To Do List 삭제</summary>
+    <img width="414" alt="스크린샷 2025-06-09 오전 12 21 52" src="https://github.com/user-attachments/assets/33861377-4f84-4981-88db-c6f5ee4aa859" />
 </details>
 <details>
   <summary>37. 노트 생성</summary>
+    <img width="685" alt="스크린샷 2025-06-09 오전 9 19 21" src="https://github.com/user-attachments/assets/03293543-9916-4fee-8cc0-7aa7cacfa769" />
 </details>
 <details>
   <summary>38. 노트 수정</summary>
+    <img width="793" alt="스크린샷 2025-06-09 오전 9 20 13" src="https://github.com/user-attachments/assets/7ad1eb89-859b-4008-898a-3c9c0f20bc2c" />
 </details>
 <details>
   <summary>39. 노트 삭제</summary>
+    <img width="776" alt="스크린샷 2025-06-09 오전 9 21 26" src="https://github.com/user-attachments/assets/20fbfdb3-4cbd-4331-a044-4fcf5560b1f8" />
 </details>
 <details>
   <summary>40. 장바구니에 커리큘럼 추가</summary>
