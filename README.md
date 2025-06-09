@@ -290,3 +290,14 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   </details>
 
 </details>
+
+## 🗒️ 회고
+<details>
+    <summary>ERD 설계하면서 느낀점</summary>
+</details>
+<details>
+    <summary>쿼리 작성하면서 느낀점</summary>
+</details>
+<details>
+    <summary>팀 프로젝트 경험에 대한 느낀점</summary>
+</details>
