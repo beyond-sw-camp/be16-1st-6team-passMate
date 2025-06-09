@@ -1,4 +1,7 @@
-# ✅ PassMate - 자격증 합격의 동반자
+# ✅ PassMate
+<p align = "center">
+    <img width="438" alt="image" src="https://github.com/user-attachments/assets/2d8e93b3-4fa4-4125-9b46-f832d358ea2f" />
+</p>
 
 ## 📌 프로젝트 배경 및 필요성
 현대 사회에서는 취업, 이직, 자기계발을 위한 수단으로 자격증의 중요성이 점차 커지고 있습니다. 이에 따라 다양한 분야의 자격증을 준비하는 수험생이 늘어나고 있으며, 이들은 체계적인 학습 계획, 실전 대비, 시험 정보 등의 다양한 도움을 필요로 합니다.
@@ -61,13 +64,42 @@ PassMate는 이러한 문제를 해결하기 위해 만들어졌습니다.
   - 세부 일정을 내 일정에 반영
 - **결제 시스템** 연동 (카카오페이, 카드 등)
 - 
-## 요구사항 정의 및 명세서(SRD)
-https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=1725882102#gid=1725882102
+## 요구사항 정의 및 명세서(SRS)
+<details>
+  <summary>요구사항 명세서 보기</summary>
+   <img width="541" alt="image" src="https://github.com/user-attachments/assets/8fae1045-83d5-4ef5-83aa-bcf0de21f684" />
+</details>
+
+<div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
+  <a href='https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=1725882102#gid=1725882102' style="text-decoration: none; color: inherit;">
+    요구사항 명세서
+  </a>
+</div>
+
 ## WBS
-https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274
+<details>
+  <summary>WBS 보기</summary>
+   <img width="1069" alt="image" src="https://github.com/user-attachments/assets/3e6e2e05-cce3-40ae-acb1-c79b1b82033a" />
+</details>
+
+<div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
+  <a href='https://docs.google.com/spreadsheets/d/1azD9ngW6ANW52FXT8A1tjiuJfzOj7GC8E5NayK5wBeg/edit?gid=688805274#gid=688805274' style="text-decoration: none; color: inherit;">
+    요구사항 명세서
+  </a>
+</div>
+
+
 ## ERD
-<img src="https://github.com/user-attachments/assets/6542dcdf-0ea8-4090-bc7c-f7163ef0e6c4">
-https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK
+<details>
+  <summary>ERD 보기</summary>
+   <img width="1069" alt="image" src="https://github.com/user-attachments/assets/6542dcdf-0ea8-4090-bc7c-f7163ef0e6c4" />
+</details>
+
+<div style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">
+  <a href='https://www.erdcloud.com/d/CjT9RaDnSCdBeAjtK' style="text-decoration: none; color: inherit;">
+    ERD
+  </a>
+</div>
 
 ## Test Query
 <details>
